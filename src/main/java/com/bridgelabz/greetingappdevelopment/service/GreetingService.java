@@ -52,4 +52,10 @@ public class GreetingService {
                 .filter(greetingElement -> greetingElement.getId() == id).findFirst()
                 .orElseThrow(() -> new RuntimeException("Unable to find any greeting"));
     }
+
+    public String deleteGreeting(int id) {
+        NewGreetingDTO greetingDTO = findEmployeeById(id);
+        greetingList.remove(greetingDTO);
+        return "Greeting deleted successfully";
+    }
 }

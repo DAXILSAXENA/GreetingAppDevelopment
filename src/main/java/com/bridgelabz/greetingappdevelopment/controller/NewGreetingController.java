@@ -1,5 +1,5 @@
 /**
- * Ability for the Greeting App to Edit a Greeting Messages in the Repository.
+ * Ability for the Greeting App to delete a Greeting Messages in the Repository
  *
  * @author DAXIL SAXENA
  * @since 08.08.2021
@@ -24,11 +24,13 @@ public class NewGreetingController {
     @Autowired
     private GreetingService greetingService;
 
+    // Ability to return message using GET method
     @GetMapping(value = "/getMessage")
     public ResponseEntity<String> getMessage() {
         return new ResponseEntity<>(greetingService.getMessage(), HttpStatus.OK);
     }
 
+    // Ability to return message using GET method
     @GetMapping(value = "/getGreetingMessage")
     public ResponseEntity<String> greeting(@RequestParam(value = "fname", defaultValue = "World") String fname,
                                            @RequestParam(value = "lname", defaultValue = "") String lname) {
@@ -41,19 +43,28 @@ public class NewGreetingController {
         return new ResponseEntity<>(greetingService.getGreeting(), HttpStatus.OK);
     }
 
+    // Ability to store multiple Greeting Message using POST method
     @PostMapping(value = "/addGreetingDetails")
     public ResponseEntity<NewGreetingDTO> addGreeting(@RequestBody NewGreetingDTO newGreetingDTO) {
         return new ResponseEntity<>(greetingService.addGreeting(newGreetingDTO), HttpStatus.OK);
     }
 
+    // Ability to return message using GET method by passing ID
     @GetMapping(value = "/getGreetingByID")
     public ResponseEntity<String> getEmployeeByID(@RequestParam(name = "id") int id) {
         return new ResponseEntity<>(greetingService.getEmployeeByID(id), HttpStatus.OK);
     }
 
+    // Ability to update message using POST method
     @PutMapping(value = "/updateGreeting")
     public ResponseEntity<NewGreetingDTO> updateGreeting(@RequestParam(name = "id") int id,
                                                       @RequestParam(name = "message") String message) {
         return new ResponseEntity<>(greetingService.updateGreeting(id, message), HttpStatus.OK);
+    }
+
+    // Ability to delete message using DELETE method
+    @DeleteMapping(value = "/deleteGreeting")
+    public ResponseEntity<String> deleteGreeting(@RequestParam(name = "id") int id) {
+        return new ResponseEntity<>(greetingService.deleteGreeting(id), HttpStatus.OK);
     }
 }
