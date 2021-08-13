@@ -1,5 +1,5 @@
 /**
- * Ability for the Greeting App to find a Greeting Message by Id in the Repository
+ * Ability for the Greeting App to List all the Greeting Messages in the Repository.
  *
  * @author DAXIL SAXENA
  * @since 08.08.2021
@@ -35,6 +35,7 @@ public class NewGreetingController {
         return new ResponseEntity<>(greetingService.getGreeting(fname, lname), HttpStatus.OK);
     }
 
+    // Ability to display List using GET method
     @GetMapping(value = "/getGreetingDetails")
     public ResponseEntity<List<NewGreetingDTO>> getGreeting() {
         return new ResponseEntity<>(greetingService.getGreeting(), HttpStatus.OK);

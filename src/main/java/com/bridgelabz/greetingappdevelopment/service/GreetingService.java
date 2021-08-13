@@ -25,6 +25,7 @@ public class GreetingService {
         return newGreetingDTO;
     }
 
+    // Ability to display the greetingList
     public List<NewGreetingDTO> getGreeting() {
         return greetingList;
     }
