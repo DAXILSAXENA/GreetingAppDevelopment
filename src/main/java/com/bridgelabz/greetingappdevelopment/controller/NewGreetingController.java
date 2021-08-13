@@ -1,5 +1,5 @@
 /**
- * Ability for the Greeting App to List all the Greeting Messages in the Repository.
+ * Ability for the Greeting App to Edit a Greeting Messages in the Repository.
  *
  * @author DAXIL SAXENA
  * @since 08.08.2021
@@ -49,5 +49,11 @@ public class NewGreetingController {
     @GetMapping(value = "/getGreetingByID")
     public ResponseEntity<String> getEmployeeByID(@RequestParam(name = "id") int id) {
         return new ResponseEntity<>(greetingService.getEmployeeByID(id), HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/updateGreeting")
+    public ResponseEntity<NewGreetingDTO> updateGreeting(@RequestParam(name = "id") int id,
+                                                      @RequestParam(name = "message") String message) {
+        return new ResponseEntity<>(greetingService.updateGreeting(id, message), HttpStatus.OK);
     }
 }

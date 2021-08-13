@@ -40,4 +40,16 @@ public class GreetingService {
         return String.valueOf(greetings);
 
     }
+
+    public NewGreetingDTO updateGreeting(int id, String message) {
+        NewGreetingDTO greetingDTO = findEmployeeById(id);
+        greetingDTO.setMessage(message);
+        return greetingDTO;
+    }
+
+    private NewGreetingDTO findEmployeeById(int id) {
+        return greetingList.stream()
+                .filter(greetingElement -> greetingElement.getId() == id).findFirst()
+                .orElseThrow(() -> new RuntimeException("Unable to find any greeting"));
+    }
 }
