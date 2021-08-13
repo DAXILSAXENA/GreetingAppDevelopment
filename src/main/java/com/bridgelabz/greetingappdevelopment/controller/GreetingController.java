@@ -40,5 +40,4 @@ public class GreetingController {
     public GreetingDTO sayHello(@PathVariable int counter, @RequestParam(value = "content") String contentName) {
         return new GreetingDTO(counter, String.format(template, contentName));
     }
-
 }
