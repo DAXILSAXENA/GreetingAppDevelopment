@@ -1,5 +1,5 @@
 /**
- * Ability for the Greeting App to save the Greeting Message in the Repository
+ * Ability for the Greeting App to find a Greeting Message by Id in the Repository
  *
  * @author DAXIL SAXENA
  * @since 08.08.2021
@@ -43,5 +43,10 @@ public class NewGreetingController {
     @PostMapping(value = "/addGreetingDetails")
     public ResponseEntity<NewGreetingDTO> addGreeting(@RequestBody NewGreetingDTO newGreetingDTO) {
         return new ResponseEntity<>(greetingService.addGreeting(newGreetingDTO), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getGreetingByID")
+    public ResponseEntity<String> getEmployeeByID(@RequestParam(name = "id") int id) {
+        return new ResponseEntity<>(greetingService.getEmployeeByID(id), HttpStatus.OK);
     }
 }
